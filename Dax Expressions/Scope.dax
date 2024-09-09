@@ -1,0 +1,18 @@
+// Make sure to rename the measure to 'Scope'
+
+Scope Parameter = 
+DATATABLE(
+    "Measure", STRING,
+    {
+        {"MTD"},
+        {"MOMTD"},
+        {"MOM"},
+        {"QTD"},
+        {"QOQTD"},
+        {"QOQ"},
+        {"YTD"},
+        {"YOYTD"},
+        {"YOY"},
+        {"MAT"}
+    }
+)

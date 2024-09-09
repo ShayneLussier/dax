@@ -1,4 +1,4 @@
-// Measure script for DAX columns
+// Create the following measures: SUM, AVERAGE, MAX, MIN, COUNT, DISTINCTCOUNT
 
 foreach(var c in Selected.Columns) {
 
@@ -6,7 +6,7 @@ foreach(var c in Selected.Columns) {
     var sumMeasure = c.Table.AddMeasure(
         "Sum of " + c.Name,                             // Name
         "SUM(" + c.DaxObjectFullName + ")",             // DAX expression
-        c.Name                                          // Display Folder
+        c.Name + "\\Sum of " + c.Name + "\\"            // Display Folder
     );
     
     sumMeasure.FormatString = "0.00";                   // Format the measure
@@ -15,7 +15,7 @@ foreach(var c in Selected.Columns) {
     var averageMeasure = c.Table.AddMeasure(
         "Average of " + c.Name,                         // Name
         "AVERAGE(" + c.DaxObjectFullName + ")",         // DAX expression
-        c.Name                                          // Display Folder
+        c.Name + "\\Average of " + c.Name + "\\"        // Display Folder
     );
     
     averageMeasure.FormatString = "0.00";               // Format the measure
@@ -24,7 +24,7 @@ foreach(var c in Selected.Columns) {
     var maxMeasure = c.Table.AddMeasure(
         "Max of " + c.Name,                             // Name
         "MAX(" + c.DaxObjectFullName + ")",             // DAX expression
-        c.Name                                          // Display Folder
+        c.Name + "\\Max of " + c.Name + "\\"            // Display Folder
     );
     
     maxMeasure.FormatString = "0.00";                   // Format the measure
@@ -33,7 +33,7 @@ foreach(var c in Selected.Columns) {
     var minMeasure = c.Table.AddMeasure(
         "Min of " + c.Name,                             // Name
         "MIN(" + c.DaxObjectFullName + ")",             // DAX expression
-        c.Name                                          // Display Folder
+        c.Name + "\\Min of " + c.Name + "\\"            // Display Folder
     );
     
     minMeasure.FormatString = "0.00";                   // Format the measure
@@ -42,7 +42,7 @@ foreach(var c in Selected.Columns) {
     var countMeasure = c.Table.AddMeasure(
         "Count of " + c.Name,                           // Name
         "COUNT(" + c.DaxObjectFullName + ")",           // DAX expression
-        c.Name                                          // Display Folder
+        c.Name + "\\Count of " + c.Name + "\\"          // Display Folder
     );
     
     countMeasure.FormatString = "0";                    // Format the measure
@@ -51,7 +51,7 @@ foreach(var c in Selected.Columns) {
     var distinctCountMeasure = c.Table.AddMeasure(
         "Distinct Count of " + c.Name,                  // Name
         "DISTINCTCOUNT(" + c.DaxObjectFullName + ")",   // DAX expression
-        c.Name                                          // Display Folder
+        c.Name + "\\Distinct Count of " + c.Name + "\\" // Display Folder
     );
     
     distinctCountMeasure.FormatString = "0";            // Format the measure

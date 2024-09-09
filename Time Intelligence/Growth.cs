@@ -1,4 +1,5 @@
 // Growth time intelligence script for DAX measures
+// Create the following measures: PM, MOM, MOM%, PQ, QOQ, QOQ%, PY, YOY, YOY%
 
 var dateColumn = "'Date'[Date]";
 var nestedFolder = "Time Intelligence\\";

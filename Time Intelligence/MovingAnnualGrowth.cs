@@ -1,4 +1,5 @@
 // Moving annual growth time intelligence script for DAX measures
+// Create the following measures: MAT, PMAT, MATG, MATG%
 
 var dateColumn = "'Date'[Date]";
 var nestedFolder = "Time Intelligence\\";

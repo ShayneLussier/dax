@@ -1,4 +1,5 @@
 // To-date growth time intelligence script for DAX measures
+// Create the following measures: PMTD, MOMTD, MOMTD%, PQTD, QOQTD, QOQTD%, PYTD, YOYTD, YOYTD%
 
 var dateColumn = "'Date'[Date]";
 var nestedFolder = "Time Intelligence\\";

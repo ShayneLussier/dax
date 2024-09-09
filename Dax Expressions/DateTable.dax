@@ -1,0 +1,13 @@
+Date = 
+VAR MinDate = DATE(2020, 1, 1)
+VAR MaxDate = DATE(2023, 09, 30)
+RETURN
+    ADDCOLUMNS (
+        CALENDAR (MinDate, MaxDate),
+        "Year", YEAR ([Date]),
+        "Year Quarter", YEAR([Date]) & "-Q" & QUARTER([Date]),
+        "Quarter", QUARTER([Date]),
+        "Year Month", YEAR([Date]) & " " & FORMAT([Date], "MMM"),
+        "Month", FORMAT([Date], "MMMM"),
+        "Day of Week", FORMAT([Date], "dddd")
+    )

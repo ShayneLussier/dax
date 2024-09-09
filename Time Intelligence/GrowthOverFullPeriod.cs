@@ -1,4 +1,5 @@
 // Growth over full period time intelligence script for DAX measures
+// Create the following measures: PMC, MTDOPM, MTDOPM%, PQC, QTDOPQ, QTDOPQ%, PYC, YTDOPY, YTDOPY%
 
 var dateColumn = "'Date'[Date]";
 var nestedFolder = "Time Intelligence\\";

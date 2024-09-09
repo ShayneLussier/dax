@@ -1,4 +1,5 @@
 // To-date total time intelligence script for DAX measures
+// Create the following measures: MTD, QTD, YTD
 
 var dateColumn = "'Date'[Date]";
 var nestedFolder = "Time Intelligence\\";
