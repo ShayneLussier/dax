@@ -13,25 +13,29 @@ foreach (var m in Selected.Measures) {
     // Destination folder using the last word of m.Name
     var destinationFolder = nestedFolder + "To-date total\\" + lastWord + "\\";
 
-    // Creates a TOTALYTD measure for every selected measure
-    m.Table.AddMeasure(
-        m.Name + " YTD",        // Name
+    // Creates a YTD measure for every selected measure
+    var ytdMeasure = m.Table.AddMeasure(
+        "YTD " + m.Name,        // Name
         "CALCULATE (" + m.DaxObjectName + ", DATESYTD (" + dateColumn + "))",      // DAX expression
-        destinationFolder + m.Name // Destination Folder
+        destinationFolder + m.Name          // Destination Folder
     );
 
+    ytdMeasure.FormatString = "0.00";      // Format the measure
+
     // Creates a QTD measure for every selected measure
-    m.Table.AddMeasure(
-        m.Name + " QTD",        // Name
+    var qtdytdMeasure = m.Table.AddMeasure(
+        "QTD " + m.Name,        // Name
         "CALCULATE (" + m.DaxObjectName + ", DATESQTD (" + dateColumn + "))",      // DAX expression
         destinationFolder + m.Name
     );
+    qtdytdMeasure.FormatString = "0.00";      // Format the measure
 
     // Creates a MTD measure for every selected measure
-    m.Table.AddMeasure(
-        m.Name + " MTD",        // Name
+    var mtdytdMeasure = m.Table.AddMeasure(
+        "MTD " + m.Name,        // Name
         "CALCULATE (" + m.DaxObjectName + ", DATESMTD (" + dateColumn + "))",      // DAX expression
         destinationFolder + m.Name
     );
+    mtdytdMeasure.FormatString = "0.00";      // Format the measure
 
 }
