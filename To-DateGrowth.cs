@@ -9,7 +9,7 @@ foreach (var m in Selected.Measures) {
     var lastWord = words.Length > 0 ? words[words.Length - 1] : m.Name;
 
     // Destination folder name
-    var destinationFolder = nestedFolder + "To-date growth\\" + lastWord + "\\";
+    var destinationFolder= nestedFolder + "To-date growth\\" + lastWord + "\\";
 
     var table = m.Table; // Measure's table reference
 
@@ -20,7 +20,7 @@ foreach (var m in Selected.Measures) {
     var pmtdMeasure = table.AddMeasure(
         pmtdMeasureName,           // Name of the new PMTD measure
         pmtdDaxExpression,         // DAX expression for PMTD
-        destinationFolder          // Display Folder
+        destinationFolder + m.Name          // Display Folder
     );
     pmtdMeasure.FormatString = "0.00"; // Format string
 
@@ -40,7 +40,7 @@ foreach (var m in Selected.Measures) {
     var momtdMeasure = table.AddMeasure(
         momtdMeasureName,      // Name of the new measure
         daxExpression,         // DAX expression
-        destinationFolder      // Display Folder
+        destinationFolder + m.Name      // Display Folder
     );
     momtdMeasure.FormatString = "0.00"; // Format string
 
@@ -51,7 +51,7 @@ foreach (var m in Selected.Measures) {
     var momtdPctMeasure = table.AddMeasure(
         momtdPctMeasureName,         // Name of the new MOMTD % measure
         momtdPctDaxExpression,       // DAX expression for MOMTD %
-        destinationFolder            // Display Folder
+        destinationFolder + m.Name            // Display Folder
     );
     momtdPctMeasure.FormatString = "0.00%"; // Format as percentage
 
@@ -62,7 +62,7 @@ foreach (var m in Selected.Measures) {
     var pqtdMeasure = table.AddMeasure(
         pqtdMeasureName,           // Name of the new PQTD measure
         pqtdDaxExpression,         // DAX expression for PQTD
-        destinationFolder          // Display Folder
+        destinationFolder + m.Name          // Display Folder
     );
     pqtdMeasure.FormatString = "0.00"; // Format string
 
@@ -82,7 +82,7 @@ foreach (var m in Selected.Measures) {
     var qoqtdMeasure = table.AddMeasure(
         qoqtdMeasureName,      // Name of the new measure
         daxExpression,         // DAX expression
-        destinationFolder      // Display Folder
+        destinationFolder + m.Name      // Display Folder
     );
     qoqtdMeasure.FormatString = "0.00"; // Format string
 
@@ -93,7 +93,7 @@ foreach (var m in Selected.Measures) {
     var qoqtdPctMeasure = table.AddMeasure(
         qoqtdPctMeasureName,         // Name of the new QOQTD % measure
         qoqtdPctDaxExpression,       // DAX expression for QOQTD %
-        destinationFolder            // Display Folder
+        destinationFolder + m.Name            // Display Folder
     );
     qoqtdPctMeasure.FormatString = "0.00%"; // Format as percentage
 
@@ -104,7 +104,7 @@ foreach (var m in Selected.Measures) {
     var pytdMeasure = table.AddMeasure(
         pytdMeasureName,           // Name of the new PYTD measure
         pytdDaxExpression,         // DAX expression for PYTD
-        destinationFolder          // Display Folder
+        destinationFolder + m.Name          // Display Folder
     );
     pytdMeasure.FormatString = "0.00"; // Format string
 
@@ -124,7 +124,7 @@ foreach (var m in Selected.Measures) {
     var yoytdMeasure = table.AddMeasure(
         yoytdMeasureName,      // Name of the new measure
         daxExpression,         // DAX expression
-        destinationFolder      // Display Folder
+        destinationFolder + m.Name      // Display Folder
     );
     yoytdMeasure.FormatString = "0.00"; // Format string
 
@@ -135,7 +135,7 @@ foreach (var m in Selected.Measures) {
     var yoytdPctMeasure = table.AddMeasure(
         yoytdPctMeasureName,         // Name of the new YOYTD % measure
         yoytdPctDaxExpression,       // DAX expression for YOYTD %
-        destinationFolder            // Display Folder
+        destinationFolder + m.Name            // Display Folder
     );
     yoytdPctMeasure.FormatString = "0.00%"; // Format as percentage
 }

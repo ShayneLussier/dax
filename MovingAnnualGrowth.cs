@@ -1,4 +1,4 @@
-// Moving Annual Total (MAT) time intelligence script for DAX measures
+// Moving annual growth time intelligence script for DAX measures
 
 var dateColumn = "'Date'[Date]";
 var nestedFolder = "Time Intelligence\\";
@@ -29,7 +29,7 @@ foreach (var m in Selected.Measures) {
     var matMeasure = table.AddMeasure(
         matMeasureName,           // Name of the new MAT measure
         matDaxExpression,         // DAX expression for MAT
-        destinationFolder          // Display Folder
+        destinationFolder + m.Name          // Display Folder
     );
     matMeasure.FormatString = "0.00"; // Format string
 
@@ -49,7 +49,7 @@ foreach (var m in Selected.Measures) {
     var pmatMeasure = table.AddMeasure(
         pmatMeasureName,            // Name of the new PMAT measure
         pmatDaxExpression,          // DAX expression for PMAT
-        destinationFolder           // Display Folder
+        destinationFolder + m.Name           // Display Folder
     );
     pmatMeasure.FormatString = "0.00";  // Format string
 
@@ -70,7 +70,7 @@ foreach (var m in Selected.Measures) {
     var matgMeasure = table.AddMeasure(
         matgMeasureName,           // Name of the new MATG measure
         matgDaxExpression,         // DAX expression for MATG
-        destinationFolder          // Display Folder
+        destinationFolder + m.Name          // Display Folder
     );
     matgMeasure.FormatString = "0.00"; // Format string
 
@@ -86,7 +86,7 @@ foreach (var m in Selected.Measures) {
     var matgPctMeasure = table.AddMeasure(
         matgPctMeasureName,        // Name of the new MATG % measure
         matgPctDaxExpression,      // DAX expression for MATG %
-        destinationFolder          // Display Folder
+        destinationFolder + m.Name          // Display Folder
     );
     matgPctMeasure.FormatString = "0.00%";  // Format as percentage
 
