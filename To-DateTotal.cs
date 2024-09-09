@@ -1,16 +1,14 @@
 // To-date total time intelligence script for DAX measures
 
-// Alias the date column
 var dateColumn = "'Date'[Date]";
 var nestedFolder = "Time Intelligence\\";
 
 foreach (var m in Selected.Measures) { 
 
-    // Extract the last word from the measure name
-    var words = m.Name.Split(' '); // Assuming space is the delimiter
+    var words = m.Name.Split(' ');          // Extract the last word from the measure name
     var lastWord = words.Length > 0 ? words[words.Length - 1] : m.Name;
 
-    // Destination folder using the last word of m.Name
+    // Destination folder name
     var destinationFolder = nestedFolder + "To-date total\\" + lastWord + "\\";
 
     // Creates a YTD measure for every selected measure
