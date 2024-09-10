@@ -1,0 +1,22 @@
+// DAX Measure to show the correct date scope on charts
+// Set as the conditional formatting for the minimum date
+// -1 day to all periods since the first day of the period wouldn't appear in tooltip
+
+Date Axis CF = 
+VAR SelectedPeriod = SELECTEDVALUE('Scope Parameter'[Scope])
+VAR CurrentDate = MAX('Date'[Date])
+RETURN
+    SWITCH(
+        SelectedPeriod,
+        "MTD", DATE(YEAR(CurrentDate), MONTH(CurrentDate), 1) - 1,
+        "MOMTD", DATE(YEAR(CurrentDate), MONTH(CurrentDate), 1) - 1,
+        "MOM", DATE(YEAR(CurrentDate), MONTH(CurrentDate), 1) - 1,
+        "QTD", DATE(YEAR(CurrentDate), QUARTER(CurrentDate) * 3 - 2, 1) - 1,
+        "QOQTD", DATE(YEAR(CurrentDate), QUARTER(CurrentDate) * 3 - 2, 1) - 1,
+        "QOQ", DATE(YEAR(CurrentDate), QUARTER(CurrentDate) * 3 - 2, 1) - 1,
+        "YTD", DATE(YEAR(CurrentDate), 1, 1) - 1,
+        "YOYTD", DATE(YEAR(CurrentDate), 1, 1) - 1,
+        "YOY", DATE(YEAR(CurrentDate), 1, 1) - 1,
+        "MAT", DATE(YEAR(CurrentDate), 1, 1) - 1,
+        BLANK()
+    )
