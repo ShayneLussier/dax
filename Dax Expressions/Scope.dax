@@ -1,8 +1,6 @@
-// Make sure to rename the measure to 'Scope'
-
 Scope Parameter = 
 DATATABLE(
-    "Measure", STRING,
+    "Scope", STRING,
     {
         {"MTD"},
         {"MOMTD"},
