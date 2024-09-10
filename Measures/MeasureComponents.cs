@@ -1,4 +1,5 @@
 // Create the following measures: Label, Chart, Percentage, CF
+// This script should be run after Time Intelligence
 
 var parameterTable = "'Scope Parameter'[Scope]";
 
