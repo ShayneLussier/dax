@@ -1,0 +1,13 @@
+// Make sure to rename the measure to 'Metric'
+// Enter all the metrics you want dynamic visual components for.
+
+Metric Parameter = 
+DATATABLE(
+    "Measure", STRING,
+    {
+        {"Sales"},
+        {"Profit"},
+        {"Quantity"},
+        {"..."}
+    }
+)
