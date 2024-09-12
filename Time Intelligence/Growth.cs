@@ -1,12 +1,12 @@
 // Growth time intelligence script for DAX measures
 // Create the following measures: PM, MOM, MOM%, PQ, QOQ, QOQ%, PY, YOY, YOY%
 
-var dateColumn = "'Date'[Date]";
-var nestedFolder = "Time Intelligence\\";
+var dateColumn = "'Date'[Date]"; // Replace with the name of your date table.
+var nestedFolder = "Time Intelligence\\"; // Parent folder name.
 
 foreach (var m in Selected.Measures) { 
 
-    var words = m.Name.Split(' ');          // Extract the last word from the measure name
+    var words = m.Name.Split(' ');
     var lastWord = words.Length > 0 ? words[words.Length - 1] : m.Name;
 
     // Destination folder using the last word of m.Name
@@ -87,9 +87,9 @@ foreach (var m in Selected.Measures) {
             DATESQTD ( " + dateColumn + @" )
         )";
     var currentQuarterMeasure = table.AddMeasure(
-        currentQuarterMeasureName,      // Name of the new Current Quarter Sum of Sales measure
-        currentQuarterDaxExpression,    // DAX expression for Current Quarter Sum of Sales
-        destinationFolder + m.Name  // Display Folder
+        currentQuarterMeasureName,
+        currentQuarterDaxExpression,
+        destinationFolder + m.Name
     );
     currentQuarterMeasure.FormatString = "0.00"; // Format string
 

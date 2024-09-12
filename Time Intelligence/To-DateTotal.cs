@@ -1,8 +1,8 @@
 // To-date total time intelligence script for DAX measures
 // Create the following measures: MTD, QTD, YTD
 
-var dateColumn = "'Date'[Date]";
-var nestedFolder = "Time Intelligence\\";
+var dateColumn = "'Date'[Date]"; // Replace with the name of your date table.
+var nestedFolder = "Time Intelligence\\"; // Parent folder name.
 
 foreach (var m in Selected.Measures) { 
 
@@ -14,27 +14,27 @@ foreach (var m in Selected.Measures) {
 
     // Creates a YTD measure for every selected measure
     var ytdMeasure = m.Table.AddMeasure(
-        "YTD " + m.Name,        // Name
-        "CALCULATE (" + m.DaxObjectName + ", DATESYTD (" + dateColumn + "))",      // DAX expression
-        destinationFolder + m.Name          // Destination Folder
+        "YTD " + m.Name,
+        "CALCULATE (" + m.DaxObjectName + ", DATESYTD (" + dateColumn + "))",
+        destinationFolder + m.Name
     );
 
-    ytdMeasure.FormatString = "0.00";      // Format the measure
+    ytdMeasure.FormatString = "0.00";      // Format string
 
     // Creates a QTD measure for every selected measure
     var qtdytdMeasure = m.Table.AddMeasure(
-        "QTD " + m.Name,        // Name
-        "CALCULATE (" + m.DaxObjectName + ", DATESQTD (" + dateColumn + "))",      // DAX expression
+        "QTD " + m.Name,
+        "CALCULATE (" + m.DaxObjectName + ", DATESQTD (" + dateColumn + "))",
         destinationFolder + m.Name
     );
-    qtdytdMeasure.FormatString = "0.00";      // Format the measure
+    qtdytdMeasure.FormatString = "0.00";      // Format string
 
     // Creates a MTD measure for every selected measure
     var mtdytdMeasure = m.Table.AddMeasure(
-        "MTD " + m.Name,        // Name
-        "CALCULATE (" + m.DaxObjectName + ", DATESMTD (" + dateColumn + "))",      // DAX expression
+        "MTD " + m.Name,
+        "CALCULATE (" + m.DaxObjectName + ", DATESMTD (" + dateColumn + "))",
         destinationFolder + m.Name
     );
-    mtdytdMeasure.FormatString = "0.00";      // Format the measure
+    mtdytdMeasure.FormatString = "0.00";      // Format string
 
 }

@@ -1,12 +1,12 @@
 // To-date growth time intelligence script for DAX measures
 // Create the following measures: PMTD, MOMTD, MOMTD%, PQTD, QOQTD, QOQTD%, PYTD, YOYTD, YOYTD%
 
-var dateColumn = "'Date'[Date]";
-var nestedFolder = "Time Intelligence\\";
+var dateColumn = "'Date'[Date]"; // Replace with the name of your date table.
+var nestedFolder = "Time Intelligence\\"; // Parent folder name.
 
 foreach (var m in Selected.Measures) { 
 
-    var words = m.Name.Split(' ');          // Extract the last word from the measure name
+    var words = m.Name.Split(' ');
     var lastWord = words.Length > 0 ? words[words.Length - 1] : m.Name;
 
     // Destination folder name
@@ -19,9 +19,9 @@ foreach (var m in Selected.Measures) {
     var pmtdDaxExpression = "CALCULATE([MTD " + m.Name + "], DATEADD(" + dateColumn + ", -1, MONTH))";
 
     var pmtdMeasure = table.AddMeasure(
-        pmtdMeasureName,           // Name of the new PMTD measure
-        pmtdDaxExpression,         // DAX expression for PMTD
-        destinationFolder + m.Name          // Display Folder
+        pmtdMeasureName,
+        pmtdDaxExpression,
+        destinationFolder + m.Name
     );
     pmtdMeasure.FormatString = "0.00"; // Format string
 
@@ -39,9 +39,9 @@ foreach (var m in Selected.Measures) {
         __Result";
 
     var momtdMeasure = table.AddMeasure(
-        momtdMeasureName,      // Name of the new measure
-        daxExpression,         // DAX expression
-        destinationFolder + m.Name      // Display Folder
+        momtdMeasureName,
+        daxExpression,
+        destinationFolder + m.Name
     );
     momtdMeasure.FormatString = "0.00"; // Format string
 
@@ -50,9 +50,9 @@ foreach (var m in Selected.Measures) {
     var momtdPctDaxExpression = "DIVIDE([MOMTD " + m.Name + "], [PMTD " + m.Name + "])";
 
     var momtdPctMeasure = table.AddMeasure(
-        momtdPctMeasureName,         // Name of the new MOMTD % measure
-        momtdPctDaxExpression,       // DAX expression for MOMTD %
-        destinationFolder + m.Name            // Display Folder
+        momtdPctMeasureName,
+        momtdPctDaxExpression,
+        destinationFolder + m.Name
     );
     momtdPctMeasure.FormatString = "0.00%"; // Format as percentage
 
@@ -61,9 +61,9 @@ foreach (var m in Selected.Measures) {
     var pqtdDaxExpression = "CALCULATE([QTD " + m.Name + "], DATEADD(" + dateColumn + ", -1, QUARTER))";
 
     var pqtdMeasure = table.AddMeasure(
-        pqtdMeasureName,           // Name of the new PQTD measure
-        pqtdDaxExpression,         // DAX expression for PQTD
-        destinationFolder + m.Name          // Display Folder
+        pqtdMeasureName,
+        pqtdDaxExpression,
+        destinationFolder + m.Name
     );
     pqtdMeasure.FormatString = "0.00"; // Format string
 
@@ -81,9 +81,9 @@ foreach (var m in Selected.Measures) {
         __Result";
 
     var qoqtdMeasure = table.AddMeasure(
-        qoqtdMeasureName,      // Name of the new measure
-        daxExpression,         // DAX expression
-        destinationFolder + m.Name      // Display Folder
+        qoqtdMeasureName,
+        daxExpression,
+        destinationFolder + m.Name
     );
     qoqtdMeasure.FormatString = "0.00"; // Format string
 
@@ -92,9 +92,9 @@ foreach (var m in Selected.Measures) {
     var qoqtdPctDaxExpression = "DIVIDE([QOQTD " + m.Name + "], [PQTD " + m.Name + "])";
 
     var qoqtdPctMeasure = table.AddMeasure(
-        qoqtdPctMeasureName,         // Name of the new QOQTD % measure
-        qoqtdPctDaxExpression,       // DAX expression for QOQTD %
-        destinationFolder + m.Name            // Display Folder
+        qoqtdPctMeasureName,
+        qoqtdPctDaxExpression,
+        destinationFolder + m.Name
     );
     qoqtdPctMeasure.FormatString = "0.00%"; // Format as percentage
 
@@ -103,9 +103,9 @@ foreach (var m in Selected.Measures) {
     var pytdDaxExpression = "CALCULATE([YTD " + m.Name + "], DATEADD(" + dateColumn + ", -1, YEAR))";
 
     var pytdMeasure = table.AddMeasure(
-        pytdMeasureName,           // Name of the new PYTD measure
-        pytdDaxExpression,         // DAX expression for PYTD
-        destinationFolder + m.Name          // Display Folder
+        pytdMeasureName,
+        pytdDaxExpression,
+        destinationFolder + m.Name
     );
     pytdMeasure.FormatString = "0.00"; // Format string
 
@@ -123,9 +123,9 @@ foreach (var m in Selected.Measures) {
         __Result";
 
     var yoytdMeasure = table.AddMeasure(
-        yoytdMeasureName,      // Name of the new measure
-        daxExpression,         // DAX expression
-        destinationFolder + m.Name      // Display Folder
+        yoytdMeasureName,
+        daxExpression,
+        destinationFolder + m.Name
     );
     yoytdMeasure.FormatString = "0.00"; // Format string
 
@@ -134,9 +134,9 @@ foreach (var m in Selected.Measures) {
     var yoytdPctDaxExpression = "DIVIDE([YOYTD " + m.Name + "], [PYTD " + m.Name + "])";
 
     var yoytdPctMeasure = table.AddMeasure(
-        yoytdPctMeasureName,         // Name of the new YOYTD % measure
-        yoytdPctDaxExpression,       // DAX expression for YOYTD %
-        destinationFolder + m.Name            // Display Folder
+        yoytdPctMeasureName,
+        yoytdPctDaxExpression,
+        destinationFolder + m.Name
     );
     yoytdPctMeasure.FormatString = "0.00%"; // Format as percentage
 }

@@ -1,7 +1,7 @@
 // Create the following measures: Label, Percentage, CF, Previous Period
 // This script should be run after Time Intelligence
 
-var parameterTable = "'Scope Parameter'[Scope]";
+var parameterTable = "'Scope Parameter'[Scope]"; // Name of your scope parameter. File in 'Dax Expressions/Scope.dax'
 
 foreach (var m in Selected.Measures) { 
 

@@ -4,54 +4,54 @@ foreach(var c in Selected.Columns) {
 
     // Creates a SUM measure for every currently selected column and hide the column.
     var sumMeasure = c.Table.AddMeasure(
-        "Sum of " + c.Name,                             // Name
-        "SUM(" + c.DaxObjectFullName + ")",             // DAX expression
-        c.Name + "\\Sum of " + c.Name + "\\"            // Display Folder
+        "Sum of " + c.Name,           
+        "SUM(" + c.DaxObjectFullName + ")",
+        c.Name + "\\Sum of " + c.Name + "\\"
     );
     
     sumMeasure.FormatString = "0.00";                   // Format the measure
 
     // Creates a AVERAGE measure for every currently selected column and hide the column.
     var averageMeasure = c.Table.AddMeasure(
-        "Average of " + c.Name,                         // Name
-        "AVERAGE(" + c.DaxObjectFullName + ")",         // DAX expression
-        c.Name + "\\Average of " + c.Name + "\\"        // Display Folder
+        "Average of " + c.Name,       
+        "AVERAGE(" + c.DaxObjectFullName + 
+        c.Name + "\\Average of " + c.Name + 
     );
     
     averageMeasure.FormatString = "0.00";               // Format the measure
 
     // Creates a MAXIMUM measure for every currently selected column and hide the column.
     var maxMeasure = c.Table.AddMeasure(
-        "Max of " + c.Name,                             // Name
-        "MAX(" + c.DaxObjectFullName + ")",             // DAX expression
-        c.Name + "\\Max of " + c.Name + "\\"            // Display Folder
+        "Max of " + c.Name,           
+        "MAX(" + c.DaxObjectFullName + ")",
+        c.Name + "\\Max of " + c.Name + "\\"
     );
     
     maxMeasure.FormatString = "0.00";                   // Format the measure
 
     // Creates a MINIMUM measure for every currently selected column and hide the column.
     var minMeasure = c.Table.AddMeasure(
-        "Min of " + c.Name,                             // Name
-        "MIN(" + c.DaxObjectFullName + ")",             // DAX expression
-        c.Name + "\\Min of " + c.Name + "\\"            // Display Folder
+        "Min of " + c.Name,           
+        "MIN(" + c.DaxObjectFullName + ")",
+        c.Name + "\\Min of " + c.Name + "\\"
     );
     
     minMeasure.FormatString = "0.00";                   // Format the measure
 
     // Creates a COUNT measure for every currently selected column and hide the column.
     var countMeasure = c.Table.AddMeasure(
-        "Count of " + c.Name,                           // Name
-        "COUNT(" + c.DaxObjectFullName + ")",           // DAX expression
-        c.Name + "\\Count of " + c.Name + "\\"          // Display Folder
+        "Count of " + c.Name,         
+        "COUNT(" + c.DaxObjectFullName + ")
+        c.Name + "\\Count of " + c.Name + "\
     );
     
     countMeasure.FormatString = "0";                    // Format the measure
 
     // Creates a COUNT(DISTINCT) measure for every currently selected column and hide the column.
     var distinctCountMeasure = c.Table.AddMeasure(
-        "Distinct Count of " + c.Name,                  // Name
-        "DISTINCTCOUNT(" + c.DaxObjectFullName + ")",   // DAX expression
-        c.Name + "\\Distinct Count of " + c.Name + "\\" // Display Folder
+        "Distinct Count of " + c.Name,
+        "DISTINCTCOUNT(" + c.DaxObjectFullN
+        c.Name + "\\Distinct Count of " + c.
     );
     
     distinctCountMeasure.FormatString = "0";            // Format the measure

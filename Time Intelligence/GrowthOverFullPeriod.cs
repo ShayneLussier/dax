@@ -1,12 +1,12 @@
 // Growth over full period time intelligence script for DAX measures
 // Create the following measures: PMC, MTDOPM, MTDOPM%, PQC, QTDOPQ, QTDOPQ%, PYC, YTDOPY, YTDOPY%
 
-var dateColumn = "'Date'[Date]";
-var nestedFolder = "Time Intelligence\\";
+var dateColumn = "'Date'[Date]"; // Replace with the name of your date table.
+var nestedFolder = "Time Intelligence\\"; // Parent folder name.
 
 foreach (var m in Selected.Measures) { 
 
-    var words = m.Name.Split(' ');          // Extract the last word from the measure name
+    var words = m.Name.Split(' ');
     var lastWord = words.Length > 0 ? words[words.Length - 1] : m.Name;
 
     // Destination folder using the last word of m.Name
@@ -28,9 +28,9 @@ foreach (var m in Selected.Measures) {
         )";
 
     var pmcMeasure = table.AddMeasure(
-        pmcMeasureName,            // Name of the new PMC measure
-        pmcDaxExpression,          // DAX expression for PMC
-        destinationFolder + m.Name          // Display Folder
+        pmcMeasureName,
+        pmcDaxExpression,
+        destinationFolder + m.Name
     );
     pmcMeasure.FormatString = "0.00";  // Format string
 
@@ -49,9 +49,9 @@ foreach (var m in Selected.Measures) {
             __Result";
 
     var mtdopmMeasure = table.AddMeasure(
-        mtdopmMeasureName,       // Name of the new MTDOPM measure
-        mtdopmDaxExpression,     // DAX expression for MTDOPM
-        destinationFolder + m.Name        // Display Folder
+        mtdopmMeasureName,
+        mtdopmDaxExpression,
+        destinationFolder + m.Name
     );
     mtdopmMeasure.FormatString = "0.00";  // Format string
 
@@ -65,9 +65,9 @@ foreach (var m in Selected.Measures) {
         )";
 
     var mtdopmPctMeasure = table.AddMeasure(
-        mtdopmPctMeasureName,    // Name of the new MTDOPM % measure
-        mtdopmPctDaxExpression,  // DAX expression for MTDOPM %
-        destinationFolder + m.Name        // Display Folder
+        mtdopmPctMeasureName,
+        mtdopmPctDaxExpression,
+        destinationFolder + m.Name
     );
     mtdopmPctMeasure.FormatString = "0.00%";  // Format as percentage
 
@@ -81,9 +81,9 @@ foreach (var m in Selected.Measures) {
         )";
 
     var pqcMeasure = table.AddMeasure(
-        pqcMeasureName,      // Name of the new PQC measure
-        pqcDaxExpression,    // DAX expression for PQC
-        destinationFolder + m.Name    // Display Folder
+        pqcMeasureName,
+        pqcDaxExpression,
+        destinationFolder + m.Name
     );
     pqcMeasure.FormatString = "0.00"; // Format string
 
@@ -103,9 +103,9 @@ foreach (var m in Selected.Measures) {
             __Result";
 
     var qtdopqMeasure = table.AddMeasure(
-        qtdopqMeasureName,       // Name of the new QTDOPQ measure
-        qtdopqDaxExpression,     // DAX expression for QTDOPQ
-        destinationFolder + m.Name        // Display Folder
+        qtdopqMeasureName,
+        qtdopqDaxExpression,
+        destinationFolder + m.Name
     );
     qtdopqMeasure.FormatString = "0.00";  // Format string
 
@@ -119,9 +119,9 @@ foreach (var m in Selected.Measures) {
         )";
 
     var qtdopqPctMeasure = table.AddMeasure(
-        qtdopqPctMeasureName,    // Name of the new QTDOPQ % measure
-        qtdopqPctDaxExpression,  // DAX expression for QTDOPQ %
-        destinationFolder + m.Name        // Display Folder
+        qtdopqPctMeasureName,
+        qtdopqPctDaxExpression,
+        destinationFolder + m.Name
     );
     qtdopqPctMeasure.FormatString = "0.00%";  // Format as percentage
 
@@ -135,9 +135,9 @@ foreach (var m in Selected.Measures) {
         )";
 
     var pycMeasure = table.AddMeasure(
-        pycMeasureName,      // Name of the new PYC measure
-        pycDaxExpression,    // DAX expression for PYC
-        destinationFolder + m.Name    // Display Folder
+        pycMeasureName,
+        pycDaxExpression,
+        destinationFolder + m.Name
     );
     pycMeasure.FormatString = "0.00"; // Format string
 
@@ -157,9 +157,9 @@ foreach (var m in Selected.Measures) {
             __Result";
 
     var ytdopyMeasure = table.AddMeasure(
-        ytdopyMeasureName,      // Name of the new YTDOPY measure
-        ytdopyDaxExpression,    // DAX expression for YTDOPY
-        destinationFolder + m.Name       // Display Folder
+        ytdopyMeasureName,
+        ytdopyDaxExpression,
+        destinationFolder + m.Name
     );
     ytdopyMeasure.FormatString = "0.00"; // Format string
 
@@ -173,9 +173,9 @@ foreach (var m in Selected.Measures) {
         )";
 
     var ytdopyPctMeasure = table.AddMeasure(
-        ytdopyPctMeasureName,    // Name of the new YTDOPY % measure
-        ytdopyPctDaxExpression,  // DAX expression for YTDOPY %
-        destinationFolder + m.Name        // Display Folder
+        ytdopyPctMeasureName,
+        ytdopyPctDaxExpression,
+        destinationFolder + m.Name
     );
     ytdopyPctMeasure.FormatString = "0.00%";  // Format as percentage
 

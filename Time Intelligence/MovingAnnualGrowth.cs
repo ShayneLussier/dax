@@ -1,12 +1,12 @@
 // Moving annual growth time intelligence script for DAX measures
 // Create the following measures: MAT, PMAT, MATG, MATG%
 
-var dateColumn = "'Date'[Date]";
-var nestedFolder = "Time Intelligence\\";
+var dateColumn = "'Date'[Date]"; // Replace with the name of your date table.
+var nestedFolder = "Time Intelligence\\"; // Parent folder name.
 
 foreach (var m in Selected.Measures) { 
 
-    var words = m.Name.Split(' ');          // Extract the last word from the measure name
+    var words = m.Name.Split(' ');
     var lastWord = words.Length > 0 ? words[words.Length - 1] : m.Name;
 
     // Destination folder using the last word of m.Name
@@ -28,9 +28,9 @@ foreach (var m in Selected.Measures) {
     )";
 
     var matMeasure = table.AddMeasure(
-        matMeasureName,           // Name of the new MAT measure
-        matDaxExpression,         // DAX expression for MAT
-        destinationFolder + m.Name          // Display Folder
+        matMeasureName,
+        matDaxExpression,
+        destinationFolder + m.Name
     );
     matMeasure.FormatString = "0.00"; // Format string
 
@@ -48,9 +48,9 @@ foreach (var m in Selected.Measures) {
         )";
 
     var pmatMeasure = table.AddMeasure(
-        pmatMeasureName,            // Name of the new PMAT measure
-        pmatDaxExpression,          // DAX expression for PMAT
-        destinationFolder + m.Name           // Display Folder
+        pmatMeasureName,
+        pmatDaxExpression,
+        destinationFolder + m.Name
     );
     pmatMeasure.FormatString = "0.00";  // Format string
 
@@ -69,9 +69,9 @@ foreach (var m in Selected.Measures) {
             __Result";
 
     var matgMeasure = table.AddMeasure(
-        matgMeasureName,           // Name of the new MATG measure
-        matgDaxExpression,         // DAX expression for MATG
-        destinationFolder + m.Name          // Display Folder
+        matgMeasureName,
+        matgDaxExpression,
+        destinationFolder + m.Name
     );
     matgMeasure.FormatString = "0.00"; // Format string
 
@@ -85,9 +85,9 @@ foreach (var m in Selected.Measures) {
         )";
 
     var matgPctMeasure = table.AddMeasure(
-        matgPctMeasureName,        // Name of the new MATG % measure
-        matgPctDaxExpression,      // DAX expression for MATG %
-        destinationFolder + m.Name          // Display Folder
+        matgPctMeasureName,
+        matgPctDaxExpression,
+        destinationFolder + m.Name
     );
     matgPctMeasure.FormatString = "0.00%";  // Format as percentage
 
