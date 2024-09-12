@@ -1,4 +1,4 @@
-// Create the following measures: Label, Chart, Percentage, CF
+// Create the following measures: Label, Percentage, CF, Previous Period
 // This script should be run after Time Intelligence
 
 var parameterTable = "'Scope Parameter'[Scope]";
@@ -39,36 +39,6 @@ foreach (var m in Selected.Measures) {
     );
     
     labelMeasure.FormatString = "0.00"; // Format string
-
-    // Create the Chart measure name and DAX expression
-    var chartMeasureName = m.Name + " - Chart";
-    var chartDaxExpression = @"
-    VAR SelectedPeriod = SELECTEDVALUE(" + parameterTable + @")
-    RETURN
-        SWITCH(
-            SelectedPeriod,
-            ""MTD"", [MTD " + m.Name + @"],
-            ""MOMTD"", [MTD " + m.Name + @"],
-            ""MOM"", [MTD " + m.Name + @"],
-            ""QTD"", [QTD " + m.Name + @"],
-            ""QOQTD"", [QTD " + m.Name + @"],
-            ""QOQ"", [QTD " + m.Name + @"],
-            ""YTD"", [YTD " + m.Name + @"],
-            ""YOYTD"", [YTD " + m.Name + @"],
-            ""YOY"", [YTD " + m.Name + @"],
-            ""MAT"", [MAT " + m.Name + @"],
-            BLANK()
-        )
-    ";
-
-    // Add the Chart measure to the table
-    var chartMeasure = table.AddMeasure(
-        chartMeasureName,
-        chartDaxExpression,
-        lastWord + "\\" + m.Name + "\\"
-    );
-    
-    chartMeasure.FormatString = "0.00"; // Format string
 
     // Create the Percentage measure name and DAX expression
     var percentageMeasureName = m.Name + " - Percentage";
@@ -113,6 +83,7 @@ foreach (var m in Selected.Measures) {
     // Create the CF (Conditional Formatting) measure name and DAX expression
     var cfMeasureName = m.Name + " - CF";
     var cfDaxExpression = @"
+    // Conditional Formatting according the Label
     IF(
         [" + m.Name + @" - Label] > 0, 
         ""#00CD79"",  // Green for positive
@@ -130,5 +101,30 @@ foreach (var m in Selected.Measures) {
         cfDaxExpression,
         lastWord + "\\" + m.Name + "\\"
     );
+
+    // Create the Previous Period measure name and DAX expression
+    var previousPeriodMeasureName = m.Name + " - Previous Period";
+    var previousPeriodDaxExpression = @"
+    // Use as Error Bar Upper Bound with Bar Charts
+    VAR SelectedPeriod = SELECTEDVALUE(" + parameterTable + @")
+    RETURN
+        SWITCH(
+            SelectedPeriod,
+            ""MTD"", [PMTD " + m.Name + @"],
+            ""QTD"", [PQTD " + m.Name + @"],
+            ""YTD"", [PYTD " + m.Name + @"],
+            ""MAT"", [PMAT " + m.Name + @"],
+            BLANK()
+        )
+    ";
+
+    // Add the Chart measure to the table
+    var previousPeriodMeasure = table.AddMeasure(
+        previousPeriodMeasureName,
+        previousPeriodDaxExpression,
+        lastWord + "\\" + m.Name + "\\"
+    );
+    
+    previousPeriodMeasure.FormatString = "0.00"; // Format string
 
 }
