@@ -1,13 +1,17 @@
 Date = 
-VAR MinDate = DATE(2020, 1, 1)
-VAR MaxDate = DATE(2023, 09, 30)
+VAR MinDate = DATE(2023, 1, 1)      -- Set minimum date for entire data set
+VAR MaxDate = MAX(fact_table[Date]) -- Set dynamic max date based on fact table
 RETURN
     ADDCOLUMNS (
-        CALENDAR (MinDate, MaxDate),
-        "Year", YEAR ([Date]),
-        "Year Quarter", YEAR([Date]) & "-Q" & QUARTER([Date]),
+        CALENDAR(MinDate, MaxDate),
+        "Year", YEAR([Date]),
         "Quarter", QUARTER([Date]),
-        "Year Month", YEAR([Date]) & " " & FORMAT([Date], "MMM"),
-        "Month", FORMAT([Date], "MMMM"),
-        "Day of Week", FORMAT([Date], "dddd")
+        "Month", MONTH([Date]),
+        "MonthName", FORMAT([Date], "MMMM"),
+        "Day", DAY([Date]),
+        "DayName", FORMAT([Date], "dddd"),
+        "DayOfWeek", WEEKDAY([Date], 1),
+        "WeekOfYear", WEEKNUM([Date]),
+        "IsWeekday", NOT(OR(WEEKDAY([Date], 1) = 1, WEEKDAY([Date], 1) = 7)),
+        "IsWeekend", OR(WEEKDAY([Date], 1) = 1, WEEKDAY([Date], 1) = 7)
     )
